@@ -1,0 +1,247 @@
+import os
+import yaml
+from reportlab.lib.pagesizes import A4
+
+from .formularioPDF import FormularioPDF
+from .paths import path
+
+class RegistrationForm:
+    """A class to create a registration form PDF for athletes."""
+
+    def __init__(self, header_text, form_filename="registration_form.pdf", papersize=A4, title='REGISTRATION FORM', logo=None):
+        """
+        Initializes a RegistrationForm object.
+
+        Args:
+            header_text (str): Text to be displayed in the form header.
+            form_filename (str, optional): Name of the generated PDF form file. Defaults to 'registration_form.pdf'.
+            papersize: (optional): Size of the PDF page, defaults to A4.
+            title (str, optional): Title of the form. Defaults to 'REGISTRATION FORM'.
+            logo (str, optional): Path to a logo file to be included in the form. Can be None if no logo is provided.
+
+        Example usage:
+            form = RegistrationForm("Registration Information", logo="logo.png")
+        """
+        
+        self.form_filename = form_filename
+        self.papersize = papersize
+        self.title = title
+        self.logo = logo
+        self.header_text = header_text
+
+        self.formulario_pdf = FormularioPDF(self.form_filename, papersize=self.papersize)
+
+    def create_form(self, athlete_data):
+        """Creates the registration form with athlete data and optional photo.
+
+        Args:
+            athlete_data (dict): Data of the athlete.
+
+        Returns:
+            None
+        """
+
+        self.formulario_pdf.set_styles(font_size=10)
+        width, height = self.papersize
+        cm_to_points = self.formulario_pdf.cm_to_points
+
+        field_info = self.build_field_info_from_yaml(os.path.join(path.yaml,'form_dados_pessoais.yaml'), athlete_data)
+
+        print(field_info)
+        self.formulario_pdf.create_pdf_header(self.logo, self.header_text, font_size=14, line_height=0.8)
+
+        # Title of the Form
+        self.formulario_pdf.create_centered_text(self.title, self.formulario_pdf.width / 2, self.formulario_pdf.height - 3.90 * cm_to_points)
+
+        x, y = 1.00 * cm_to_points, height - 6.90 * cm_to_points
+        configuration = self.read_yaml_configuration(os.path.join(path.yaml,'form.yaml'))
+        field_info_list = self.build_field_info(configuration, athlete_data)
+        print(f"field_info_list <<<<<<<<<<<<<<< {field_info_list}" )
+        for block_name, field_info in field_info_list:
+            print(f"field_info >>>>>>> {field_info}")
+            self.formulario_pdf.create_form_block(x, y, field_info, block_name=block_name)
+            y = y - 5.5 * 0.9 * cm_to_points
+
+
+            
+#        field_info = self.build_field_info_from_yaml(os.path.join(path.yaml,'form_dados_pessoais.yaml'), athlete_data)
+#        self.formulario_pdf.create_form_block(x, y, field_info, block_name='DADOS PESSOAIS')
+
+        photo_x = x + 16 * cm_to_points
+        photo_y = y - self.formulario_pdf.line_height
+        photo_width = 3 * cm_to_points
+        photo_height = (4/3) * photo_width
+
+        if athlete_data['foto']:
+            self.formulario_pdf.insert_image_from_binary(athlete_data['foto'], photo_x, photo_y, photo_width, photo_height)
+            self.formulario_pdf.draw_labeled_rectangle(photo_x, photo_y, photo_width, photo_height, '', label_color='#FFFFFF', line_width=5, fill=0)
+            self.formulario_pdf.draw_labeled_rectangle(photo_x, photo_y, photo_width, photo_height, '', fill=0)
+        else:
+            self.formulario_pdf.draw_labeled_rectangle(photo_x, photo_y, photo_width, photo_height, '', 'FOTO\\n3x4')
+            gender_x = x + 13.30 * cm_to_points
+            gender_y = y
+            gender_width = 2.60 * cm_to_points
+            gender_height = self.formulario_pdf.line_height
+            selected_gender = self.get_selected_gender(athlete_data)
+            self.formulario_pdf.draw_gender_field(gender_x, gender_y, gender_width, gender_height, selected_gender)
+
+#        y = y - 5.5 * 0.9 * cm_to_points
+        
+#        field_info = self.build_field_info_from_yaml(os.path.join(path.yaml,'form_documentos.yaml'), athlete_data)
+#        self.formulario_pdf.create_form_block(x, y, field_info, block_name='DOCUMENTOS')
+
+        self.formulario_pdf.canvas.showPage()
+        
+    @staticmethod
+    def read_yaml_configuration(file_name):
+        """
+        Reads a YAML configuration file and returns its content as a Python dictionary.
+    
+        Args:
+            file_name (str): The name of the YAML file to be read.
+    
+        Returns:
+            dict or None: A dictionary containing the YAML configuration if successful, 
+            or None if there was an error or the file was not found.
+        """
+        try:
+            with open(file_name, 'r') as file:
+                configuration = yaml.load(file, Loader=yaml.FullLoader)
+                return configuration
+        except FileNotFoundError:
+            print(f"The file '{file_name}' was not found.")
+            return None
+        except Exception as e:
+            print(f"Error while reading the file '{file_name}': {str(e)}")
+            return None
+    
+    @staticmethod
+    def build_field_info(configuration,athlete_data):
+        """
+        Converts a YAML configuration into a list of tuples in the specified format.
+    
+        Args:
+            configuration (dict): The YAML configuration represented as a dictionary.
+            athlete_data (dict): Data of the athlete to populate the form.
+
+        Returns:
+            list: A list of tuples where each tuple represents a block with its label 
+            and a list of tuples for the fields within that block.
+        """
+        field_info_list = []
+        
+        for block in configuration:
+            block_name = block['block_name']
+            lines      = block['lines']
+            block_info = (block_name, [])
+            
+            field_inf = []
+            for line_info in lines:
+                line   = line_info['line']
+                fields = line_info['fields']
+                line_fields = []
+                for field in fields:
+                    width = field['width']
+                    label = field['label']
+                    key   = field.get('key', None)  # Get the 'key' or set it to an empty string if not present
+                    value = athlete_data.get(key, '') if key else None
+                    field_tuple = (width, label) if value is None else (width, label, value)                    
+                    line_fields.append(field_tuple)
+                
+                block_info[1].append((line,line_fields))
+            
+            field_info_list.append((block_name,block_info))
+        
+        return field_info_list
+
+    @staticmethod
+    def build_field_info_from_yaml(yaml_file, athlete_data):
+        """Builds field information for the form from a YAML file.
+
+        Args:
+            yaml_file (str): Path to the YAML file containing form structure.
+            athlete_data (dict): Data of the athlete to populate the form.
+
+        Returns:
+            list: A list containing field information.
+        """
+        with open(yaml_file, 'r') as file:
+            form_structure = yaml.safe_load(file)
+
+        field_info = []
+        for line_info in form_structure:
+            line = line_info['line']
+            fields = line_info['fields']
+            line_fields = []
+            for field in fields:
+                width = field['width']
+                label = field['label']
+                key = field.get('key')
+                value = athlete_data.get(key, '') if key else None
+                field_tuple = (width, label) if value is None else (width, label, value)
+                line_fields.append(field_tuple)
+            field_info.append((line, line_fields))
+        return field_info
+
+    def save_pdf(self):
+        """Saves the current form in PDF format.
+
+        Returns:
+            None
+        """
+        self.formulario_pdf.canvas.save()
+
+    @staticmethod
+    def build_field_info_from_yaml_(yaml_file, athlete_data):
+        """Builds field information for the form from a YAML file.
+    
+        Args:
+            yaml_file (str): Path to the YAML file containing form structure.
+            athlete_data (dict): Data of the athlete to populate the form.
+    
+        Returns:
+            dict: A dictionary containing block names as keys and lists of tuples as values.
+        """
+        with open(yaml_file, 'r') as file:
+            form_structure = yaml.safe_load(file)
+   
+        field_info_dict = {}  # Initialize a dictionary to store block_name as keys and field information as values
+        current_block_name = None
+    
+        for line_info in form_structure:
+            if 'block_name' in line_info:
+                current_block_name = line_info['block_name']
+                field_info_dict[current_block_name] = []  # Initialize an empty list for the block
+    
+            line = line_info['line']
+            fields = line_info['fields']
+            line_fields = []
+    
+            for field in fields:
+                width = field['width']
+                label = field['label']
+                key = field.get('key')
+                value = athlete_data.get(key, '') if key else None
+                field_tuple = (width, label) if value is None else (width, label, value)
+                line_fields.append(field_tuple)
+    
+            if current_block_name:
+                field_info_dict[current_block_name].append((line, line_fields))
+    
+        return field_info_dict
+
+
+    @staticmethod
+    def get_selected_gender(athlete_data):
+        """Determines which gender radio button is checked.
+
+        Args:
+            athlete_data (dict): Data of the athlete.
+
+        Returns:
+            str: 'M' if the 'masculino' radio button is checked,
+                 'F' if the 'feminino' radio button is checked,
+                 an empty string if neither is checked.
+        """
+        return 'M' if athlete_data.get('masculino') else 'F' if athlete_data.get('feminino') else ''
+

@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Dialog</class>
+ <widget class="QDialog" name="Dialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>788</width>
+    <height>347</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QGroupBox" name="groupBox">
+     <property name="title">
+      <string>Configuração</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout">
+      <!-- Nome do Time -->
+      <item row="0" column="0">
+       <widget class="QLabel" name="labelNomeTime">
+        <property name="text">
+         <string>Nome do Time:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QLineEdit" name="nome"/>
+      </item>
+      <!-- CNPJ -->
+      <item row="0" column="2">
+       <widget class="QLabel" name="labelCNPJ">
+        <property name="text">
+         <string>CNPJ:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="3">
+       <widget class="QLineEdit" name="docCPF"/>
+      </item>
+      <!-- Data da Fundação -->
+      <item row="1" column="0">
+       <widget class="QLabel" name="labelDataFundacao">
+        <property name="text">
+         <string>Data da Fundação:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QDateEdit" name="dtNascimento"/>
+      </item>
+      <!-- E-mail -->
+      <item row="1" column="2">
+       <widget class="QLabel" name="labelEmail">
+        <property name="text">
+         <string>E-mail:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="3">
+       <widget class="QLineEdit" name="emailResponsavel"/>
+      </item>
+      <!-- Fone de Contato -->
+      <item row="2" column="0">
+       <widget class="QLabel" name="labelFoneContato">
+        <property name="text">
+         <string>Fone Contato:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QLineEdit" name="foneContato"/>
+      </item>
+      <!-- Rua -->
+      <item row="3" column="0">
+       <widget class="QLabel" name="labelRua">
+        <property name="text">
+         <string>Rua:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="1">
+       <widget class="QLineEdit" name="rua"/>
+      </item>
+      <!-- Número -->
+      <item row="3" column="2">
+       <widget class="QLabel" name="labelNumero">
+        <property name="text">
+         <string>N°:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="3">
+       <widget class="QLineEdit" name="numero"/>
+      </item>
+      <!-- Bairro -->
+      <item row="4" column="0">
+       <widget class="QLabel" name="labelBairro">
+        <property name="text">
+         <string>Bairro:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="1">
+       <widget class="QLineEdit" name="bairro"/>
+      </item>
+      <!-- Cidade -->
+      <item row="4" column="2">
+       <widget class="QLabel" name="labelCidade">
+        <property name="text">
+         <string>Cidade:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="3">
+       <widget class="QLineEdit" name="cidade"/>
+      </item>
+      <!-- UF -->
+      <item row="5" column="0">
+       <widget class="QLabel" name="labelUF">
+        <property name="text">
+         <string>UF:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="1">
+       <widget class="QLineEdit" name="UF"/>
+      </item>
+      <!-- CEP -->
+      <item row="5" column="2">
+       <widget class="QLabel" name="labelCEP">
+        <property name="text">
+         <string>CEP:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="3">
+       <widget class="QLineEdit" name="CEP"/>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QDialogButtonBox" name="buttonBox">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="standardButtons">
+      <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
+

@@ -1,0 +1,65 @@
+
+# Seção de DOCUMENTOS
+- line: 1
+  fields:
+    - width: 6.30
+      label: "RG"
+      key: "docRG"
+    - width: 6.30
+      label: "CPF"
+      key: "docCPF"
+    - width: 6.40
+      label: "CARTEIRA DO SUS"
+      key: "docSUS"
+
+- line: 2
+  fields:
+    - width: 19.00
+      label: "REGISTRO DE NASCIMENTO"
+
+- line: 2.5
+  fields:
+    - width: 3.20
+      label: "NÚMERO"
+      key: "docRNNumero"
+    - width: 3.20
+      label: "LIVRO"
+      key: "docRNLivre"
+    - width: 3.20
+      label: "FOLHA"
+      key: "docRNFolha"
+    - width: 3.00
+      label: "DATA REGISTRO"
+      key: "docRNdt"
+    - width: 5.00
+      label: "CIDADE"
+      key: "docRNcidade"
+    - width: 1.40
+      label: "UF"
+      key: "docRNUF"
+
+- line: 3.5
+  fields:
+    - width: 9.50
+      label: "NOME DA MÃE"
+      key: "docRNMae"
+    - width: 4.75
+      label: "RG"
+      key: "docRNMaeRG"
+    - width: 4.75
+      label: "CPF"
+      key: "docRNMaeCPF"
+
+- line: 4.5
+  fields:
+    - width: 9.50
+      label: "NOME DA PAI"
+      key: "docRNPai"
+    - width: 4.75
+      label: "RG"
+      key: "docRNPaiRG"
+    - width: 4.75
+      label: "CPF"
+      key: "docRNPaiCPF"
+
+# ... (Adicione mais campos conforme necessário)

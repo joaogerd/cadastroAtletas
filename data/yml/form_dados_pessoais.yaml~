@@ -1,0 +1,65 @@
+- block_name: 'DADOS PESSOAIS'
+    line: 1
+    fields:
+      - width: 13.30
+        label: "NOME"
+        key: "nome"
+      - width: 2.60
+        label: "SEXO"
+  
+    line: 2
+    fields:
+      - width: 7.20
+        label: "NATURAL DE"
+        key: "cidadeNatal"
+      - width: 1.40
+        label: "UF"
+        key: "UFNatal"
+      - width: 3.00
+        label: "NASCIMENTO"
+        key: "dtNascimento"
+      - width: 4.30
+        label: "NOME USUAL"
+        key: "nomeUsual"
+  
+    line: 3
+    fields:
+      - width: 11.10
+        label: "RUA"
+        key: "rua"
+      - width: 1.40
+        label: "N°"
+        key: "numero"
+      - width: 6.50
+        label: "BAIRRO"
+        key: "bairro"
+  
+    line: 4
+    fields:
+      - width: 11.10
+        label: "CIDADE"
+        key: "cidade"
+      - width: 1.40
+        label: "UF"
+        key: "UF"
+      - width: 3.20
+        label: "CEP"
+        key: "CEP"
+      - width: 3.30
+        label: "Fone Contato"
+        key: "foneContato"
+  
+    line: 5
+    fields:
+      - width: 11.10
+        label: "RESPONSAVEL LEGAL"
+        key: "responsavelLegal"
+      - width: 4.60
+        label: "E-MAIL"
+        key: "emailResponsabvel"
+      - width: 3.30
+        label: "Fone Contato"
+        key: "foneResponsavel"
+  
+  
+  # ... (Adicione mais campos conforme necessário)

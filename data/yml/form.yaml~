@@ -1,0 +1,130 @@
+- block_name: 'DADOS PESSOAIS'
+  lines:
+    - line: 1
+      fields:
+        - width: 13.30
+          label: "NOME"
+          key: "nome"
+        - width: 2.60
+          label: "SEXO"
+          key: "sexo"
+
+    - line: 2
+      fields:
+        - width: 7.20
+          label: "NATURAL DE"
+          key: "cidadeNatal"
+        - width: 1.40
+          label: "UF"
+          key: "UFNatal"
+        - width: 3.00
+          label: "NASCIMENTO"
+          key: "dtNascimento"
+        - width: 4.30
+          label: "NOME USUAL"
+          key: "nomeUsual"
+
+    - line: 3
+      fields:
+        - width: 11.10
+          label: "RUA"
+          key: "rua"
+        - width: 1.40
+          label: "N°"
+          key: "numero"
+        - width: 6.50
+          label: "BAIRRO"
+          key: "bairro"
+
+    - line: 4
+      fields:
+        - width: 11.10
+          label: "CIDADE"
+          key: "cidade"
+        - width: 1.40
+          label: "UF"
+          key: "UF"
+        - width: 3.20
+          label: "CEP"
+          key: "CEP"
+        - width: 3.30
+          label: "Fone Contato"
+          key: "foneContato"
+
+    - line: 5
+      fields:
+        - width: 11.10
+          label: "RESPONSAVEL LEGAL"
+          key: "responsavelLegal"
+        - width: 4.60
+          label: "E-MAIL"
+          key: "emailResponsavel"
+        - width: 3.30
+          label: "Fone Contato"
+          key: "foneResponsavel"
+
+#- block_name: 'DOCUMENTOS'
+#  lines:
+#    - line: 1
+#      fields:
+#        - width: 6.30
+#          label: "RG"
+#          key: "docRG"
+#        - width: 6.30
+#          label: "CPF"
+#          key: "docCPF"
+#        - width: 6.40
+#          label: "CARTEIRA DO SUS"
+#          key: "docSUS"
+#
+#    - line: 2
+#      fields:
+#        - width: 19.00
+#          label: "REGISTRO DE NASCIMENTO"
+#
+#    - line: 2.5
+#      fields:
+#        - width: 3.20
+#          label: "NÚMERO"
+#          key: "docRNNumero"
+#        - width: 3.20
+#          label: "LIVRO"
+#          key: "docRNLivre"
+#        - width: 3.20
+#          label: "FOLHA"
+#          key: "docRNFolha"
+#        - width: 3.00
+#          label: "DATA REGISTRO"
+#          key: "docRNdt"
+#        - width: 5.00
+#          label: "CIDADE"
+#          key: "docRNcidade"
+#        - width: 1.40
+#          label: "UF"
+#          key: "docRNUF"
+#
+#    - line: 3.5
+#      fields:
+#        - width: 9.50
+#          label: "NOME DA MÃE"
+#          key: "docRNMae"
+#        - width: 4.75
+#          label: "RG"
+#          key: "docRNMaeRG"
+#        - width: 4.75
+#          label: "CPF"
+#          key: "docRNMaeCPF"
+#
+#    - line: 4.5
+#      fields:
+#        - width: 9.50
+#          label: "NOME DA PAI"
+#          key: "docRNPai"
+#        - width: 4.75
+#          label: "RG"
+#          key: "docRNPaiRG"
+#        - width: 4.75
+#          label: "CPF"
+#          key: "docRNPaiCPF"
+
+  # ... (Adicione mais campos conforme necessário)

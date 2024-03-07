@@ -1,0 +1,19 @@
+[177805:177805:0229/105519.066081:WARNING:chrome_main_delegate.cc(742)] This is Chrome version 122.0.6261.57 (not a warning)
+[177805:177805:0229/105519.088836:INFO:policy_logger.cc(145)] :components/policy/core/common/config_dir_policy_loader.cc(113) Found mandatory policy file: /etc/opt/chrome/policies/managed/vmware-urlAllowlist.json
+[177805:177805:0229/105519.088885:INFO:policy_logger.cc(145)] :components/policy/core/common/config_dir_policy_loader.cc(118) Skipping recommended platform policies because no policy file was found at: /etc/opt/chrome/policies/recommended
+[177805:177805:0229/105519.151515:INFO:policy_logger.cc(145)] :components/enterprise/browser/controller/chrome_browser_cloud_management_controller.cc(168) Starting CBCM Controller Initialization
+[177805:177805:0229/105519.151537:INFO:policy_logger.cc(145)] :components/enterprise/browser/controller/chrome_browser_cloud_management_controller.cc(196) No machine level policy manager exists.
+[177805:177805:0229/105519.244459:WARNING:bluez_dbus_manager.cc(248)] Floss manager not present, cannot set Floss enable/disable.
+[177848:177848:0229/105519.363590:WARNING:sandbox_linux.cc(418)] InitializeSandbox() called with multiple threads in process gpu-process.
+[177805:177805:0229/105519.380876:ERROR:object_proxy.cc(576)] Failed to call method: org.freedesktop.ScreenSaver.GetActive: object_path= /org/freedesktop/ScreenSaver: org.freedesktop.DBus.Error.NotSupported: This method is not implemented
+[177848:177848:0229/105519.444136:ERROR:gl_surface_presentation_helper.cc(260)] GetVSyncParametersIfAvailable() failed for 1 times!
+[177848:177848:0229/105519.498186:ERROR:gl_surface_presentation_helper.cc(260)] GetVSyncParametersIfAvailable() failed for 2 times!
+[177848:177848:0229/105519.501818:ERROR:gl_surface_presentation_helper.cc(260)] GetVSyncParametersIfAvailable() failed for 3 times!
+[177805:177805:0229/105519.584910:INFO:CONSOLE(0)] "Error with Permissions-Policy header: Unrecognized feature: 'ambient-light-sensor'.", source:  (0)
+[177805:177805:0229/105519.584933:INFO:CONSOLE(0)] "Error with Permissions-Policy header: Unrecognized feature: 'bluetooth'.", source:  (0)
+[177848:177848:0229/105519.595295:ERROR:shared_image_manager.cc(221)] SharedImageManager::ProduceSkia: Trying to Produce a Skia representation from a non-existent mailbox.
+[177805:177805:0229/105519.892822:INFO:CONSOLE(215)] "Another connection wants to delete database 'wawc'. Closing db now to resume the delete request.", source: https://web.whatsapp.com/serviceworker.js (215)
+[177805:177805:0229/105519.892894:INFO:CONSOLE(215)] "Another connection wants to delete database 'wawc'. Closing db now to resume the delete request.", source: https://web.whatsapp.com/serviceworker.js (215)
+[177849:177865:0229/105539.950819:WARNING:sqlite_persistent_store_backend_base.cc(197)] Failed to post task from FlushAndNotifyInBackground@net/extras/sqlite/sqlite_persistent_store_backend_base.cc:246 to client_task_runner_.
+[177849:177865:0229/105539.950876:WARNING:sqlite_persistent_store_backend_base.cc(197)] Failed to post task from FlushAndNotifyInBackground@net/extras/sqlite/sqlite_persistent_store_backend_base.cc:246 to client_task_runner_.
+[177805:177805:0229/105539.966042:WARNING:pref_notifier_impl.cc(41)] Pref observer for media_router.cast_allow_all_ips found at shutdown.
